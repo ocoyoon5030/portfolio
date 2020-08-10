@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+html, body, h1, h2, h3, ul, dl, dd, p { margin: 0; padding: 0;}
+li { list-style: none; }
+a { text-decoration: none; }
+.hidden { position: absolute; left: -9999px; }
+
+
+/* 헤더 */
+header { width: 100%; height: 120px; background: #c3a273}
+/* 헤더 로고 */
+header #logo { width: 103px; height: 110px;
+               position:absolute; top: 30px; left: 60px;
+               background: url("../images/logo.svg") no-repeat;
+               text-indent: -9999px;
+             }
+/* 헤더 언어 선택 */
+header #lang_gnb { width: 110px; height: 175px;
+                   position: absolute; top: 40px; right: 115px;
+                   background: #6de88e; }
+header #lang_gnb a { display: block;
+                     text-align: center;
+                   }
+header #lang_gnb > a { font-weight: bold; font-size: 18px;
+                       height: 50px; line-height: 50px;
+                     }
+header #lang_gnb ul { }
+header #lang_gnb ul li { }
+header #lang_gnb ul li a { width: 110px; height: 37px;
+                           background: #d86bf0;
+                           line-height: 30px;
+                           font-size: 15px;
+                         }
+/* 헤더 네비게이션 */
+header #gnb { }
+header #gnb
