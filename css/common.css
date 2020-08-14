@@ -1,13 +1,24 @@
 @charset "UTF-8";
 
-html, body, h1, h2, h3, ul, dl, dd, p { margin: 0; padding: 0;}
+/* 초기값 */
+html, body, h1, h2, h3, ul, dl, dd, p, button { margin: 0; padding: 0;}
 li { list-style: none; }
-a { text-decoration: none; }
+a { text-decoration: none; color: #000;}
 .hidden { position: absolute; left: -9999px; }
-
+html { font-family: 'Montserrat', sans-serif; }
+html, body { width: 100%; min-width: 1350px;}
 
 /* 헤더 */
-header { width: 100%; height: 120px; background: #c3a273}
+header { position:relative;
+         width: 100%; height: 120px;
+         /* background: #c3a273; */
+         min-width: 1350px;
+        }
+header::before { display:inline-block; content: "";
+                 width: 100%;
+                 position:absolute; top: 120px;
+                 /* border-bottom: 2px solid black; */
+               }
 /* 헤더 로고 */
 header #logo { width: 103px; height: 110px;
                position:absolute; top: 30px; left: 60px;
@@ -17,20 +28,642 @@ header #logo { width: 103px; height: 110px;
 /* 헤더 언어 선택 */
 header #lang_gnb { width: 110px; height: 175px;
                    position: absolute; top: 40px; right: 115px;
-                   background: #6de88e; }
+                   border: 1px solid #e5e5e5;
+                   background: #fff;
+                   z-index: 40;
+                 }
 header #lang_gnb a { display: block;
                      text-align: center;
                    }
 header #lang_gnb > a { font-weight: bold; font-size: 18px;
                        height: 50px; line-height: 50px;
+                       padding-right: 20px;
+                       box-sizing: border-box;
+                       background: url("../images/lang_arr.png") no-repeat 75px center;
                      }
 header #lang_gnb ul { }
 header #lang_gnb ul li { }
 header #lang_gnb ul li a { width: 110px; height: 37px;
-                           background: #d86bf0;
+                           /* background: #d86bf0; */
                            line-height: 30px;
                            font-size: 15px;
                          }
+
+
+
+
+
 /* 헤더 네비게이션 */
-header #gnb { }
-header #gnb
+header #gnb { width: 900px; height: 400px;
+              padding-left: 240px;
+              overflow: hidden;
+              height: 120px;
+              /* background: #9c57f2; */
+            }
+header #gnb > ul { }
+header #gnb .mainMenu { float: left; margin: 0 20px;
+                        width: 140px; height: 400px;
+                        /* background: #3e822f; */
+                       }
+header #gnb .mainMenu:nth-of-type(3) { margin: 0 1px 0 20px;}
+header #gnb .mainMenu:nth-of-type(4) { margin: 0 1px 0 1px;}
+
+header #gnb .mainMenu > a {font-size: 19px;
+                           display: block;
+                           width: 140px; height: 60px;
+                           padding-top: 60px;
+                           /* background: #db341d; */
+                          }
+
+header #gnb .mainMenu ul { padding-top: 20px;
+                           background: #41b2df;
+                         }
+header #gnb .mainMenu ul li {}
+header #gnb .mainMenu ul a { font-size: 17px; line-height: 2.75; }
+
+
+
+
+
+
+
+/* 좌측 페이지 프로세스 바 */
+#pageBar { width:5px; height: 100%;
+           position: fixed;
+           left:0; top: 0;
+           background: #cfcfcf;
+           z-index: 50;
+         }
+#pageBar div { background: #c50405;
+               width: 100%;
+               height: 100px;
+             }
+
+
+
+
+
+
+/* 오른쪽 패널 */
+#rightPannel { width: 960px; height: 100%;
+               position:fixed; right:-880px; top: -0px;
+               z-index: 50;
+             }
+/* 오른쪽 패널 타이틀탭 */
+#rightPannel .titleWrap { width: 80px;
+                          background: #ffb8f7;
+                          display: inherit;
+                        }
+#rightPannel .contact > a { display: block;
+                            width: 80px; height: 400px;
+                            background: #f00;
+                            position: absolute;
+                            left: 0;
+                            color: #fff;
+                          }
+#rightPannel .contact > a span {
+                               display: inline-block;
+                               width: 200px;
+                               -webkit-transform: rotate(-90deg);
+                               -moz-transform: rotate(-90deg);
+                               position: absolute;
+                               bottom: 120px; left: -60px;
+                               font-size: 19px;
+                               font-weight: 1000;
+                             }
+#rightPannel .catalog > a { display: block;
+                           width: 80px; height: 130px;
+                           background: #e9e9e9;
+                           position: absolute;
+                           left: 0; top:400px;
+                           color: #000;
+                         }
+#rightPannel .catalog > a span {
+                              display: inline-block;
+                              width: 100px;
+                              -webkit-transform: rotate(-90deg);
+                              -moz-transform: rotate(-90deg);
+                              position: absolute;
+                              bottom: 65px; left: -10px;
+                              font-size: 19px;
+                              font-weight: 1000;
+                            }
+
+/* 오른쪽 패널 Contact */
+#rightPannel .contact { width: 440px; height: 100%;
+                       /* background: #b61111; */
+                       margin-left: 80px;
+                     }
+
+#rightPannel .contactBox { height: 100%; width : 440px;
+                           position: absolute; top:0; left: 80px;
+                           padding-top: 110px;
+                           background: #bb2f1c;
+                           box-sizing: border-box;
+                         }
+
+#rightPannel .scrollBox { width: 390px; height: 730px;
+                          margin: 0 0 90px 50px;
+                          /* background: #8dc4d2; */
+                        }
+#rightPannel .contactBox li { border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+#rightPannel .contactBox li > a { display:block; width: 390px; height: 80px;
+                                  font-size:24px; line-height: 80px;
+                                  position: relative;
+                                  color: #fff;
+                                }
+#rightPannel .contactBox li > a::after { display:inline-block; content: "";
+                                         width:16px; border-bottom: 2px solid #fff;
+                                         position:absolute; top: 50%; right: 50px;
+                                       }
+#rightPannel .contactBox li > a::before { display:inline-block; content: "";
+                                         width:16px; border-bottom: 2px solid #fff;
+                                         position:absolute; top: 50%; right: 50px;
+                                         -webkit-transform: rotate(-90deg);
+                                         -moz-transform: rotate(-90deg);
+                                       }
+#rightPannel .contactBox li:nth-of-type(1) dl { height: 48px;
+                                                padding: 10px 0 30px;
+                                                display: none;
+                                              }
+#rightPannel .contactBox li:nth-of-type(2) dl { height: 336px;
+                                                padding: 10px 0 30px;
+                                                display: none;
+                                              }
+#rightPannel .contactBox li:nth-of-type(3) { border: 0;}
+#rightPannel .contactBox li:nth-of-type(3) dl { height: 96px;
+                                                padding: 10px 0 30px;
+                                              }
+#rightPannel .contactBox dl dt { margin-top: 13px;
+                                 margin-bottom: 8px; font-size: 18px;
+                                 line-height: 22px;
+                                 color: #fff;
+                               }
+#rightPannel .contactBox dl dd span { display: inline-block; padding-right: 11px;
+                                      font-size: 12px; line-height: 12px;
+                                      margin-bottom: 13px;
+                                      color: #fff;
+                                    }
+#rightPannel .contactBox dl dd a { display: inline-block;
+                                   font-size: 12px; line-height: 18px;
+                                   margin-left: 6px;
+                                   color: #fff;
+                                 }
+
+#rightPannel .contactAsk { display: block; width: 100%; height: 80px;
+                           background: #b20022;
+                           position:absolute; bottom: 0px;
+                           font-size: 20px; color: #fff;
+                           padding-left: 49px; line-height: 80px;
+                           box-sizing:border-box;
+                         }
+#rightPannel .contactAsk::before { display: block; content:""; width: 16px; height: 10px;
+                                   position: absolute; top: 50%; right: 50px;
+                                   margin-top: -5px;
+                                   background: url("../images/arrow1.png")
+                                 }
+
+
+
+/* 오른쪽 패널 Catalog */
+#rightPannel .catalogBox { height: 100%; width : 440px;
+                           position: absolute; top:0; left: 520px;
+                           padding-top: 110px;
+                           background: #f0f0f0;
+                         }
+#rightPannel .catalogBox h3 { width: 390px; height: 80px;
+                               font-size:24px; line-height: 80px;
+                               position: relative;
+                               font-size: 24px;
+                               color: #222; font-weight: normal;
+                               border-bottom: 1px solid #ddd;
+                            }
+#rightPannel .catalogBox ul { height: 190px;
+                              padding-top: 20px;
+                            }
+#rightPannel .catalogBox ul li { height: 55px; padding: 20px 0; position:relative;}
+#rightPannel .catalogBox p { font-size: 16px; line-height: 18px;
+                             color: #aaa; margin-bottom: 12px;
+                           }
+#rightPannel .catalogBox span { display: block; font-size: 24px; line-height: 24px;
+                                color: #222;
+                              }
+#rightPannel .catalogBox .downBtn { display: block; width: 47px; height: 56px;
+                                    position:absolute; top: 20px; right: 36px;
+                                    background: url("../images/img_file_off.png") no-repeat;
+                                    text-indent: -9999px;
+                                  }
+#rightPannel .catalogBox .downBtn::after { display: block; content:"";
+                                           width: 47px; height: 56px;
+                                           position:absolute; top: 0;
+                                           background: url("../images/img_file_on.png") no-repeat;
+                                           opacity: 0;
+                                         }
+
+
+/* 패널 열기,닫기 버튼 */
+#rightPannel .closeBtn { width: 80px; height: 80px;
+                         position: fixed; top:25px; right:0;
+                         border: none;
+                         outline: none;
+                         cursor: pointer;
+                         text-indent: -9999px;
+                         background: rgba(255, 255, 255, 0);
+                       }
+#rightPannel .closeBtn::before { display: block; content: '';
+                                 position: absolute; top: 50%; left: 50%;
+                                 width:24px; border-bottom: 2px solid #fff;
+                                 -webkit-transform: rotate(-45deg);
+                                 -moz-transform: rotate(-45deg);
+                                 margin-left: -12px;
+                                 z-index: 999;
+                               }
+#rightPannel .closeBtn::after { display: block; content: '';
+                                position: absolute; top: 50%; left: 50%;
+                                width:24px; border-bottom: 2px solid #fff;;
+                                -webkit-transform: rotate(45deg);
+                                -moz-transform: rotate(45deg);
+                                margin-left: -12px;
+                              }
+
+
+
+
+
+
+
+
+
+/* 메인페이지 */
+#main { width: 100%; position: relative;}
+
+/* MAIN 비디오 */
+#mainVideo { width: 100%; height: 100%; overflow: hidden;}
+#mainVideo video { width: 100%; height: 100%; transform: scale(1.16); }
+
+
+
+
+section { width: 100%; height: 1000px; }
+
+
+
+/* BUSINESS */
+/* CONTENTBOX1 */
+#business { width: 100%; height: 1250px;
+            padding-bottom: 120px;
+            overflow: hidden;
+            /* background: #d24bbe; */
+            position: relative;
+          }
+.contentBox1 {
+               width: 1110px; height: 156px;
+               /* background: #7731de; */
+               padding: 120px 0 95px;
+               padding-left: 20%;
+               position: relative;
+             }
+.contentBox1 h2 { font-size: 56px; line-height: 56px; margin-bottom: 40px;
+                  position: relative;
+                }
+
+.animateBox { display: block; width: 400px; height: 280px;
+              position: absolute; top: 0px; left: 215px;
+              /* background: #7dd060; */
+            }
+.animateBox .aniText { display:block; width: 400px; height: 68px; line-height: 56px;}
+
+.contentBox1 p { font-size: 14px; color: #555; }
+
+
+
+/* CONTENTBOX2 */
+.contentBox2 { width: 100%; height: 392px;
+               /* background: #a062fb; */
+               position: relative;
+               margin-bottom: 100px;
+             }
+.contentBox2 .imgBox { width: 45%; height: 382px;
+                       position: absolute; top: 10px; left: 60px;
+                       /* background: #3ffedc; */
+                     }
+.contentBox2 .imgBox .img { width: 100%; height: 100%;
+                            background: url("../images/img_main1.jpg") no-repeat center center / cover;
+                          }
+.contentBox2 .contentInner { width: 45%; height: 382px;
+                             position: absolute; top: 0px; right: 0;
+                           }
+.contentBox2 .contentInner .RscrollText { font-size: 80px; line-height: 70px; margin-bottom: 65px;
+                                          text-transform: capitalize;
+                                          color: #eee;
+                                        }
+.contentBox2 .contentInner .text1 { font-size: 28px; line-height: 1.35; margin-bottom: 30px;
+                                    color: #222;}
+.contentBox2 .contentInner .text2 { font-size: 14px; line-height: 1.71; margin-bottom: 60px;
+                                    color: #555;}
+
+.contentBox2 .contentInner .btnDetail { display: inline-block; width:87px; height: 22px;
+                                        padding-right: 30px;
+                                        background: url("../images/arrow2_off.png") no-repeat right 0;
+                                        font-size: 16px; line-height: 22px; position:relative; }
+.contentBox2 .contentInner .btnDetail::after { display: block; content: ''; width:20px; height: 20px;
+                                               position:absolute; top: 0; right: 0;
+                                               background: url("../images/arrow2_on.png");
+                                               opacity: 0;
+                                             }
+
+/* CONTENTBOX3 */
+.contentBox3 { width: 100%; height: 392px;
+               /* background: #a062fb; */
+               position: relative;
+               margin-bottom: 100px;
+             }
+.contentBox3 .imgBox { width: 49%; height: 382px;
+                       position: absolute; bottom: 0px; right: 0;
+                       /* background: #3ffedc; */
+                     }
+.contentBox3 .imgBox .img { width: 100%; height: 100%;
+                            background: url("../images/img_main2.jpg") no-repeat center center / cover;
+                          }
+.contentBox3 .contentInner { width: 45%; height: 382px;
+                             padding-left: 11.7%;
+                             position: absolute; top: 0px; left: 0;
+                           }
+.contentBox3 .contentInner .LscrollText { font-size: 80px; line-height: 70px; margin-bottom: 65px;
+                                          text-transform: capitalize;
+                                          color: #eee;
+                                        }
+.contentBox3 .contentInner .text1 { font-size: 28px; line-height: 1.35; margin-bottom: 30px;
+                                    color: #222;}
+.contentBox3 .contentInner .text2 { font-size: 14px; line-height: 1.71; margin-bottom: 60px;
+                                    color: #555;}
+
+.contentBox3 .contentInner .btnDetail { display: inline-block; width:87px; height: 22px; padding-right: 30px;
+                           font-size: 16px; line-height: 22px; position:relative; }
+.contentBox3 .contentInner .btnDetail::after { display: block; content: ''; width:20px; height: 20px;
+                                               position:absolute; top: 0; right: 1px;
+                                               background: url("../images/arrow2_on.png")
+                                             }
+
+
+
+/* 섹션 Nav */
+#sectionNav {
+             position: absolute; top: 120px; left: 70px;
+             width: 88px; height: 80px;
+             z-index: 50;
+            }
+#sectionNav ul { }
+#sectionNav ul li { }
+#sectionNav ul li a {
+                      text-transform : uppercase;
+                      position: relative;
+                      color: #666;
+                      font-size: 12px;
+                      line-height: 12px;
+                      margin-bottom: 8px;
+                      font-weight: 600;
+                    }
+#sectionNav ul li a::before { display:block; content: '';
+                              position: absolute; top: 50%; left: -11px;
+                              margin-top: -2px;
+                              width:4px; height:4px;
+                              border-radius: 4px;
+                              background: #e0002a;
+                            }
+
+
+/* TECHNOLOGY */
+#tech { width: 100%; height: 3000px;
+        position: relative;
+      }
+#tech > * {height: 1000px;}
+
+#tech .techAni { width: 100%; }
+#tech .techAni .circle { width: 485px; height: 485px;
+                         position: absolute; top: calc(50% - 242px); left: calc(50% - 242px);
+                         background: url("../images/main_circle.png");
+                         animation: circle 7s infinite linear;
+                       }
+
+@keyframes circle { 100% { transform: rotate(360deg); }
+                  }
+
+#tech .techAni { position: absolute; width: 100%;
+                 background: rgba(168, 210, 115, 0.29);
+                 z-index: 40;
+               }
+#tech .techAni h2 { width: 300px; height: 120px;
+                    position: absolute;
+                    top: 12%; left: 15%;
+                    font-size: 40px;
+                    font-weight: normal;
+                  }
+#tech .techAni .changeBox { width: 250px; height: 152px;
+                            position: absolute; bottom: 25%; right: 12.3%;
+                          }
+#tech .techAni .changeBox .change_num { font-size: 190px; line-height: 190px; color: #e0002a;
+                                        font-weight: 700; padding-right: 20px;
+                                       }
+#tech .techAni .changeBox .change_unit { font-size: 50px; line-height:40px;
+                                         color: #222;
+                                         font-weight: 700;
+                                         z-index: 20;
+                                       }
+
+
+#tech .techPage1 { position: relative;
+                   background: linear-gradient(180deg, #cdddf0 0%, #cdddf0 55%, #f9dee0 100%);
+                 }
+#tech .techPage1 .text1 { position: absolute; right: 13%; bottom: 48%;
+                          font-size: 40px; line-height: 40px;
+                          width: 390px; color: #e0002a; font-weight: 700;
+                          z-index: 40;
+                        }
+#tech .techPage1 .text2 { position: absolute; right: 13%; bottom: 10%;
+                          font-size: 30px; line-height: 1.5; color: #222;
+                          text-align: right; width: 170px; height: 90px;
+                        }
+
+
+
+
+
+
+#tech .techPage2 { position: relative;
+                   background: #f9dee0;
+                 }
+#tech .techPage2 .text1 { position: absolute; right: 13%; bottom: 48%;
+                          font-size: 40px; line-height: 40px;
+                          width: 570px; color: #e0002a; font-weight: 700;
+                          z-index: 40;
+                        }
+#tech .techPage2 .text2 { position: absolute; right: 13%; bottom: 10%;
+                          font-size: 30px; line-height: 1.5; color: #222;
+                          text-align: right; width: 520px; height: 90px;
+                        }
+
+
+
+
+
+#tech .techPage3 { position: relative;
+                   background: url("../images/img_main3.jpg") no-repeat center center / cover;
+                 }
+#tech .techPage3 .text1 { position: absolute; right: 13%; bottom: 48%;
+                          font-size: 40px; line-height: 40px;
+                          width: 497px; color: #e0002a; font-weight: 700;
+                          z-index: 40;
+                        }
+#tech .techPage3 .text2 { position: absolute; right: 13%; bottom: 10%;
+                          font-size: 30px; line-height: 1.5; color: #222;
+                          text-align: right; width: 530px; height: 90px;
+                        }
+
+
+
+/* MEDIA */
+#media { width: 100%; height: 1900px;
+         min-width: 1000px;
+         position: relative;
+         padding-right: 10%;
+         box-sizing: border-box;
+         text-align: right;
+       }
+#media .mediaText { width: 325px; height: 300px;
+                    padding-left: 25%;
+                    padding-top: 120px;
+                    text-align: left;
+                  }
+#media .mediaText h2 { font-size: 50px; font-weight: 800; line-height: 1.44;
+                       color: #222; margin-bottom: 40px;
+                     }
+#media .mediaText p { font-size: 16px; line-height: 16px; color: #555;
+                      margin-bottom: 110px; }
+#media .btnMore { display: inline-block; width: 55px; height: 22px;
+                  font-size: 18px;
+                  color: #222; padding-right: 40px;
+                  background: url("../images/arrow2_off.png") no-repeat right 2px;
+                }
+
+#media .mediaList { display: inline-block; margin-top: -290px; padding-bottom: 280px;
+                    padding-left: 50%;
+                    width: 780px; z-index: 30;
+                  }
+#media .mediaList .mediaContent { width: 346px; height: 446px;
+                                  border:2px solid #e0002a;
+                                  margin: 0 0 40px 40px;
+                                  float: left;
+                                  position: relative;
+                                }
+#media .mediaList .mediaContent:nth-child(even) { transform:translateY(130px);  }
+#media .mediaList .mediaContent .newsCard { display: block; width: 346px; height: 446px; }
+#media .mediaList .mediaContent .newsCard .newsTop { display: block;
+                                                     width: 350px; height: 250px;
+                                                     background: #fff;
+                                                     margin-left: -2px;
+                                                     margin-top: -2px;
+                                                     overflow: hidden;
+                                                   }
+#media .mediaList .mediaContent:nth-child(1) .newsCard .newsTop { background: #e0002a; }
+#media .mediaList .mediaContent .newsCard .newsTop img { width: 524px; height: 360px; }
+
+
+#media .mediaList .mediaContent .newsCard .newsTop .date { font-size: 12px; line-height: 12px;
+                                                           position: absolute;
+                                                           top: 33px; right: 32px;
+                                                           font-weight: 700;
+                                                           text-align: center;
+                                                           color: #000;
+                                                         }
+
+#media .mediaList .mediaContent:nth-child(1) .newsCard .newsTop .date { color: #fff; }
+#media .mediaList .mediaContent:nth-child(2) .newsCard .newsTop .date { color: #fff; }
+#media .mediaList .mediaContent:nth-child(4) .newsCard .newsTop .date { color: #fff; }
+#media .mediaList .mediaContent:nth-child(5) .newsCard .newsTop .date { color: #fff; }
+
+#media .mediaList .mediaContent .newsCard .newsTop .day { font-size: 46px; line-height: 46px;
+                                                          position: absolute;
+                                                          top: 45px; right: 32px;
+                                                          text-align: center;
+                                                          color: #000;
+                                                        }
+#media .mediaList .mediaContent:nth-child(1) .newsCard .newsTop .day { color: #fff; }
+#media .mediaList .mediaContent:nth-child(2) .newsCard .newsTop .day { color: #fff; }
+#media .mediaList .mediaContent:nth-child(4) .newsCard .newsTop .day { color: #fff; }
+#media .mediaList .mediaContent:nth-child(5) .newsCard .newsTop .day { color: #fff; }
+
+#media .mediaList .mediaContent .newsCard .newsBottom { width: 350px; height: 200px;
+                                                        margin-left: -2px;
+                                                        margin-bottom: -2px;
+                                                        position: absolute;
+                                                        bottom: 0;
+                                                        text-align: left;
+                                                        padding: 43px 20px 40px;
+                                                        box-sizing: border-box;
+                                                      }
+#media .mediaList .mediaContent:nth-child(1) .newsCard .newsBottom { background: #e0002a; }
+#media .mediaList .mediaContent:nth-child(2) .newsCard .newsBottom { background: #e0002a; }
+#media .mediaList .mediaContent:nth-child(3) .newsCard .newsBottom { background: #fff; }
+#media .mediaList .mediaContent:nth-child(4) .newsCard .newsBottom { background: #232733; }
+#media .mediaList .mediaContent:nth-child(5) .newsCard .newsBottom { background: #232733; }
+#media .mediaList .mediaContent:nth-child(6) .newsCard .newsBottom { background: #fff; }
+
+
+#media .mediaList .mediaContent .newsCard .newsBottom dt { font-size: 16px;
+                                                           color: rgba(255, 255, 255, 0.5);
+                                                           margin-bottom: 25px;
+                                                         }
+#media .mediaList .mediaContent:nth-child(3) .newsCard .newsBottom dt { color: rgba(34, 34, 34, 0.5); }
+#media .mediaList .mediaContent:nth-child(6) .newsCard .newsBottom dt { color: rgba(34, 34, 34, 0.5); }
+
+#media .mediaList .mediaContent .newsCard .newsBottom dd { font-size: 24px; line-height: 1.5;
+                                                           color: #fff;
+                                                         }
+#media .mediaList .mediaContent:nth-child(3) .newsCard .newsBottom dd { color: #222; }
+#media .mediaList .mediaContent:nth-child(6) .newsCard .newsBottom dd { color: #222; }
+
+
+
+
+
+/* footer */
+#footer { width: 100%;  height: 190px; background: #16181f; position: relative;}
+#footer .btnUp { width: 60px; height: 60px; background: #2d2e34;
+                 position: absolute; right: 40px; top: -30px;
+                 text-indent: -9999px;
+                 border: none;
+               }
+#footer .btnUp::after { display: block; content: '';
+                        width: 10px; height: 14px;
+                        position: absolute; top: calc(50% - 7px); left: calc(50% - 5px);
+                        background: url(../images/arrow4.png)
+                      }
+#footer * { color: #fff; }
+#footer .leftWrap { width: 450px; height: 57px; float: left; padding-left: 7%; padding-top: 48px;}
+#footer .leftWrap .footer_nav { height: 18px; margin-bottom: 25px; }
+#footer .leftWrap .footer_nav li { float: left; margin-right: 35px;}
+#footer .leftWrap .footer_nav li a { font-size: 14px; color: #aaa; }
+#footer .leftWrap small { clear:both; font-size: 12px; line-height: 14px; color: #686a6e;}
+
+#footer .rightWrap { width: 378px; height: 50px; float: right; padding: 40px 150px 0 0; }
+#footer .rightWrap .sns_list { float: left; }
+#footer .rightWrap .sns_list li { float: left; }
+#footer .rightWrap .sns_list li a { display: block; width: 50px; height: 50px; text-indent: -9999px;
+                                    /* border:1px solid #fff; */
+                                    background-image: no-repeat;
+                                  }
+#footer .rightWrap .sns_list li .facebook { background: url("../images/img_footer1.png") no-repeat center center;
+                                            margin-right: 5px; }
+#footer .rightWrap .sns_list li .insta { background: url("../images/img_footer2.png") no-repeat center center;}
+#footer .rightWrap .familySite { float: right; width: 220px; height: 45px; margin-left: 45px; text-align: left;
+                                 font-size: 14px; position: relative;
+                               }
+#footer .rightWrap .familySite > a { display: block; color: #fafafa; }
+#footer .rightWrap .familySite .siteList { width: 220px; height: 360px; position: absolute;
+                                           background: #2d2e34; top: -380px;
+                                         }
+#footer .rightWrap .familySite .siteList li { height: 40px; }
+#footer .rightWrap .familySite .siteList li a { display: block; width: 220px; height: 40px; padding: 0 20px;
+                                                line-height: 40px; font-size: 14px; color: #7a7c81;
+                                              }
